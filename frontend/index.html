@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<body>
+  <h1>3-Tier App - Version 2</h1>
+  <button onclick="visit()">Count a visit</button>
+  <p id="out"></p>
+  <script>
+    function visit() {
+      fetch('/api/visit').then(r => r.json())
+        .then(d => document.getElementById('out').innerText = 'Visits: ' + d.visits);
+    }
+  </script>
+</body>
+</html>
