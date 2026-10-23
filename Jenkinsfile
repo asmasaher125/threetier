@@ -9,7 +9,7 @@ pipeline {
         stage('Test') {
             steps {
                 sh '''
-                docker run --rm -v $PWD/backend:/app -w /app python:3.11-slim \
+                docker run --rm -e PYTHONDONTWRITEBYTECODE=1 -v $PWD/backend:/app -w /app python:3.11-slim \
                   sh -c "pip install -q flask pymongo && python -m unittest test_app.py"
                 '''
             }
